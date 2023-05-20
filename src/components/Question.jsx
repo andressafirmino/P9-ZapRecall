@@ -1,32 +1,103 @@
 import styled from "styled-components"
 import play from "../assets/seta_play.png"
 import back from "../assets/seta_virar.png"
+import wrong from "../assets/icone_erro.png"
+import almost from "../assets/icone_quase.png"
+import right from "../assets/icone_certo.png"
+import { useCallback, useState } from "react";
 
 export default function Question(props) {
-    return (
-        <Quest>
-            <Title>
-                <p>Pergunta {props.position}</p>
-                <img src={play} />
-            </Title>
+
+    const [print, setPrint] = useState(
+        <Title>
+            <p>Pergunta {props.position}</p>
+            <img src={play} onClick={start}/>
+        </Title>
+    );
+
+    const [choice, setChoice] = useState(false);
+
+    function not() {
+        setPrint(
+        <Title>
+            <Not>Pergunta {props.position}</Not>
+            <img src={wrong} />
+        </Title>
+        )
+    }
+    
+    function doubt() {
+        setPrint(
+        <Title>
+            <Doubt>Pergunta {props.position}</Doubt>
+            <img src={almost} />
+        </Title>
+        )
+    }
+
+    function zap() {
+        setPrint(
+        <Title>
+            <Zap>Pergunta {props.position}</Zap>
+            <img src={right} />
+        </Title>
+        )
+    }
+
+    function check(isClick) {
+        
+        
+        if (isClick) {
+            setPrint(
+                <Answer>
+                    <p>{props.answ}</p>
+                    <div>
+                        <Red>
+                            <p onClick={not}>Não lembrei</p>
+                        </Red>
+                        <Orange>
+                            <p onClick={doubt}>Quase não lembrei</p>
+                        </Orange>
+                        <Green>
+                            <p onClick={zap}>Zap!</p>
+                        </Green>
+                    </div>
+                </Answer>
+            );
+           } else {
+            setPrint(
+                <Box_Question>
+                    <p>{props.quest}</p>
+                    <img src={back} onClick={check}/>
+                </Box_Question>
+            );
+           }
+    }
+    function start(click) {
+       if (click) {
+        setPrint(
             <Box_Question>
                 <p>{props.quest}</p>
-                <img src={back} />
+                <img src={back} onClick={check}/>
             </Box_Question>
-            <Answer>
-                <p>{props.answ}</p>
-                <div>
-                    <Red>
-                        <p>Não lembrei</p>
-                    </Red>
-                    <Orange>
-                        <p>Quase não lembrei</p>
-                    </Orange>
-                    <Green>
-                        <p>Zap!</p>
-                    </Green>
-                </div>
-            </Answer>
+        );
+       } else {
+        setPrint(
+            <Title>
+                <Paragraph>Pergunta {props.position}</Paragraph>
+                <img src={play} onClick={start}/>
+            </Title>
+        );
+       }
+    }
+
+
+
+
+    return (
+        <Quest> 
+            {print}
+            {choice}
         </Quest>
     )
 }
@@ -50,18 +121,18 @@ const Title = styled.div `
     align-items: center;   
     box-sizing: border-box; 
     padding: 15px;
-    display: none;
 
-    p {
-        font-size: 17px;
-        font-weight: 700;
-        color: #333333;
-    }
     img {
         width: 20px;
         height: 23px;
     }
 `;
+
+const Paragraph = styled.p `
+    font-size: 17px;
+    font-weight: 700;
+    color: #333333;
+`
 
 const Box_Question = styled.div `
     width: 300px;
@@ -72,8 +143,6 @@ const Box_Question = styled.div `
     box-sizing: border-box;
     padding: 15px;
     position: relative;
-    display: none;
-
 
     p {
         font-size: 18px;
@@ -99,7 +168,7 @@ const Answer = styled.div `
     padding: 15px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;   
+    justify-content: space-around;  
 
     p {
         font-size: 18px;
@@ -135,6 +204,10 @@ const Answer = styled.div `
     
 `;
 
+const Desabled = styled.div `
+    display: none;
+`;
+
 const Red = styled.button `
     background-color: #FF3030;
 `;
@@ -143,4 +216,25 @@ const Orange = styled.button `
 `
 const Green = styled.button `
     background-color: #2FBE34;
+`;
+
+const Not = styled.p `
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: line-through;
+    color: #FF3030
+`;
+
+const Doubt = styled.p `
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: line-through;
+    color: #FF922E;
+`;
+
+const Zap = styled.p `
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: line-through;
+    color: #2FBE34;
 `;
