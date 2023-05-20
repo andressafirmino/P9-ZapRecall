@@ -16,9 +16,15 @@ export default function Question(props) {
             <Answer>
                 <p>{props.answ}</p>
                 <div>
-                    <button></button>
-                    <button></button>
-                    <button></button>
+                    <Red>
+                        <p>Não lembrei</p>
+                    </Red>
+                    <Orange>
+                        <p>Quase não lembrei</p>
+                    </Orange>
+                    <Green>
+                        <p>Zap!</p>
+                    </Green>
                 </div>
             </Answer>
         </Quest>
@@ -41,9 +47,9 @@ const Title = styled.div `
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: space-between;
-    align-items: center;    
+    align-items: center;   
+    box-sizing: border-box; 
     padding: 15px;
-    box-sizing: border-box;
     display: none;
 
     p {
@@ -64,14 +70,15 @@ const Box_Question = styled.div `
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     box-sizing: border-box;
+    padding: 15px;
     position: relative;
     display: none;
+
 
     p {
         font-size: 18px;
         font-weight: 400;
         color: #333333;
-        margin-left: 15px;
     }
     img {
         width: 30px;
@@ -88,6 +95,11 @@ const Answer = styled.div `
     background-color: #FFFFD5;
     border-radius: 5px;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;   
 
     p {
         font-size: 18px;
@@ -107,7 +119,28 @@ const Answer = styled.div `
         font-size: 12px;
         font-weight: 400;
         color: #FFFFFF;
-    }
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+
+        p {
+            font-size: 12px;
+            font-weight: 400;
+            color: #FFFFFF;
+        }
+        }
     }
     
+`;
+
+const Red = styled.button `
+    background-color: #FF3030;
+`;
+const Orange = styled.button `
+    background-color: #FF922E;
+`
+const Green = styled.button `
+    background-color: #2FBE34;
 `;

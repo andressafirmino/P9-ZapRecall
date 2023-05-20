@@ -20,5 +20,5 @@ export default function Questions() {
 }
 
 const Quests = styled.div `
-    margin: 0 auto 40px;
+    margin: 0 auto 70px;
 `;
