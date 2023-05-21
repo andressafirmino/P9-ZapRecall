@@ -6,42 +6,46 @@ import almost from "../assets/icone_quase.png"
 import right from "../assets/icone_certo.png"
 import { useCallback, useState } from "react";
 
-export default function Question(props) {
+export default function Question({counter, setCounter, position, answer, question}) {
 
     const [print, setPrint] = useState(
         <Title>
-            <p>Pergunta {props.position}</p>
+            <p>Pergunta {position}</p>
             <img src={play} onClick={start}/>
         </Title>
     );
 
-    const [choice, setChoice] = useState(false);
-
     function not() {
         setPrint(
         <Title>
-            <Not>Pergunta {props.position}</Not>
-            <img src={wrong} />
+            <Not data-test="flashcard-text">Pergunta {position}</Not>
+            <img src={wrong} data-test="no-icon"/>
         </Title>
         )
+        setCounter(counter + 1);
+        console.log(counter);
     }
-    
+
     function doubt() {
         setPrint(
         <Title>
-            <Doubt>Pergunta {props.position}</Doubt>
-            <img src={almost} />
+            <Doubt data-test="flashcard-text">Pergunta {position}</Doubt>
+            <img src={almost} data-test="partial-icon"/>
         </Title>
         )
+        setCounter(counter + 1);
+        console.log(counter);
     }
 
     function zap() {
         setPrint(
         <Title>
-            <Zap>Pergunta {props.position}</Zap>
-            <img src={right} />
+            <Zap data-test="flashcard-text">Pergunta {position}</Zap>
+            <img src={right} data-test="zap-icon"/>
         </Title>
         )
+        setCounter(counter + 1);
+        console.log(counter);
     }
 
     function check(isClick) {
@@ -50,16 +54,16 @@ export default function Question(props) {
         if (isClick) {
             setPrint(
                 <Answer>
-                    <p>{props.answ}</p>
+                    <p data-test="flashcard-text">{answer}</p>
                     <div>
                         <Red>
-                            <p onClick={not}>Não lembrei</p>
+                            <p onClick={not} data-test="no-btn">Não lembrei</p>
                         </Red>
                         <Orange>
-                            <p onClick={doubt}>Quase não lembrei</p>
+                            <p onClick={doubt} data-test="partial-btn">Quase não lembrei</p>
                         </Orange>
                         <Green>
-                            <p onClick={zap}>Zap!</p>
+                            <p onClick={zap} data-test="zap-btn">Zap!</p>
                         </Green>
                     </div>
                 </Answer>
@@ -67,7 +71,7 @@ export default function Question(props) {
            } else {
             setPrint(
                 <Box_Question>
-                    <p>{props.quest}</p>
+                    <p data-test="flashcard-text">{question}</p>
                     <img src={back} onClick={check}/>
                 </Box_Question>
             );
@@ -77,15 +81,15 @@ export default function Question(props) {
        if (click) {
         setPrint(
             <Box_Question>
-                <p>{props.quest}</p>
-                <img src={back} onClick={check}/>
+                <p data-test="flashcard-text">{question}</p>
+                <img src={back} onClick={check} data-test="turn-btn"/>
             </Box_Question>
         );
        } else {
         setPrint(
             <Title>
-                <Paragraph>Pergunta {props.position}</Paragraph>
-                <img src={play} onClick={start}/>
+                <Paragraph data-test="flashcard-text">Pergunta {position}</Paragraph>
+                <img src={play} onClick={start} data-test="play-btn"/>
             </Title>
         );
        }
@@ -97,7 +101,6 @@ export default function Question(props) {
     return (
         <Quest> 
             {print}
-            {choice}
         </Quest>
     )
 }

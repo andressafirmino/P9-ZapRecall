@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Question from "./Question";
-export default function Questions() {
+export default function Questions({counter, setCounter}) {
 
     const cards = [
         { id: "1", question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
@@ -13,8 +13,8 @@ export default function Questions() {
         { id: "8", question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
     ]
     return (
-        <Quests>
-            {cards.map(card => <Question key={card.id} position={card.id} quest={card.question} answ={card.answer} />)}
+        <Quests data-test="flashcard">
+            {cards.map(card => <Question key={card.id} position={card.id} question={card.question} answer={card.answer} counter={counter} setCounter={setCounter}/>)}
         </Quests>
     )
 }

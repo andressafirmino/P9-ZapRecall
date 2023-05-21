@@ -1,8 +1,8 @@
 import styled from "styled-components";
-export default function Bottom() {
+export default function Bottom({counter, setCounter}) {
     return (
         <Embaixo>
-            <p> 0/4 Concluídos</p>
+            <p data-test="footer"> {counter}/8 Concluídos</p>
         </Embaixo>
     );
 }
