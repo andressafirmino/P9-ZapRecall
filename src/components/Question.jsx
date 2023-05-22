@@ -11,7 +11,7 @@ export default function Question(props) {
     const {counter, setCounter} = props;
     const [print, setPrint] = useState(
         <Title>
-            <Paragraph data-test="flashcard">Pergunta {position}</Paragraph>
+            <Paragraph data-test="flashcard-text">Pergunta {position}</Paragraph>
             <img src={play} onClick={start} />
         </Title>
     );
@@ -97,7 +97,7 @@ export default function Question(props) {
 
 
     return (
-        <Quest>
+        <Quest data-test="flashcard">
             {print}
         </Quest>
     )
