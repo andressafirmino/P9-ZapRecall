@@ -2,7 +2,7 @@ import styled from "styled-components";
 export default function Bottom(props) {
   const {counter} = props;
     return (
-        <Embaixo data-test="no-icon">
+        <Embaixo data-test="footer">
             <p> {counter}/8 CONCLUÍDOS</p>
         </Embaixo>
     );
