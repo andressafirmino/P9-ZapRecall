@@ -14,7 +14,7 @@ export default function Questions(props) {
         { id: "8", question: "Usamos estado (state) para __", answer: "Dizer para o React quais informações quando atualizadas devem renderizar a tela novamente" }
     ]
     return (
-        <Quests data-test="flashcard">
+        <Quests>
             {cards.map(card => <Question key={card.id} position={card.id} question={card.question} answer={card.answer} counter={counter} setCounter={setCounter}/>)}
         </Quests>
     )

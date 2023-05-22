@@ -98,7 +98,7 @@ export default function Question(props) {
 
 
     return (
-        <Quest>
+        <Quest data-test="flashcard">
             {print}
         </Quest>
     )
