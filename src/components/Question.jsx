@@ -12,7 +12,7 @@ export default function Question(props) {
     const [print, setPrint] = useState(
         <Title>
             <Paragraph data-test="flashcard-text">Pergunta {position}</Paragraph>
-            <img src={play} onClick={start} />
+            <img src={play} onClick={start} data-test="play-btn"/>
         </Title>
     );
 
@@ -193,12 +193,13 @@ const Answer = styled.div`
         font-weight: 400;
         color: #FFFFFF;
         border: none;
+        box-sizing: border-box;
         display: flex;
         justify-content: center;
         align-items: center;
-        box-sizing: border-box;
 
         p {
+            margin-left: -1px;
             font-family: 'Recursive', sans-serif;
             font-size: 12px;
             font-weight: 400;
@@ -212,6 +213,9 @@ const Answer = styled.div`
 
 const Red = styled.button`
     background-color: #FF3030;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `;
 const Orange = styled.button`
     background-color: #FF922E;
