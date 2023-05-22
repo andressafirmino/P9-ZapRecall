@@ -55,14 +55,14 @@ export default function Question(props) {
                 <Answer>
                     <p data-test="flashcard-text">{answer}</p>
                     <div>
-                        <Red>
-                            <p onClick={not} data-test="no-btn">Não lembrei</p>
+                        <Red data-test="no-btn">
+                            <p onClick={not}>Não lembrei</p>
                         </Red>
-                        <Orange>
-                            <p onClick={doubt} data-test="partial-btn">Quase não lembrei</p>
+                        <Orange data-test="partial-btn">
+                            <p onClick={doubt}>Quase não lembrei</p>
                         </Orange>
-                        <Green>
-                            <p onClick={zap} data-test="zap-btn">Zap!</p>
+                        <Green data-test="zap-btn">
+                            <p onClick={zap}>Zap!</p>
                         </Green>
                     </div>
                 </Answer>
@@ -71,7 +71,7 @@ export default function Question(props) {
             setPrint(
                 <Box_Question>
                     <p data-test="flashcard-text">{question}</p>
-                    <img src={back} onClick={check} />
+                    <img src={back} onClick={check} data-test="turn-btn"/>
                 </Box_Question>
             );
         }
