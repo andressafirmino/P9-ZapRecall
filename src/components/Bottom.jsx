@@ -1,8 +1,9 @@
 import styled from "styled-components";
-export default function Bottom({counter, setCounter}) {
+export default function Bottom(props) {
+  const {counter} = props;
     return (
         <Embaixo>
-            <p data-test="footer"> {counter}/8 Concluídos</p>
+            <p data-test="footer"> {counter}/8 CONCLUÍDOS</p>
         </Embaixo>
     );
 }
@@ -20,6 +21,7 @@ const Embaixo = styled.div `
   align-items: center;
 
   p {
+    font-family: 'Recursive', sans-serif;
     font-size: 18px;
     font-weight: 400;
     color: #333333;

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Question from "./Question";
-export default function Questions({counter, setCounter}) {
+export default function Questions(props) {
 
+    const {counter, setCounter} = props;
     const cards = [
         { id: "1", question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
         { id: "2", question: "O React é __", answer: "Uma biblioteca JavaScript para construção de interfaces" },

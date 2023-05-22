@@ -24,6 +24,7 @@ margin: 42px auto;
     justify-content: center;
     align-items: center;
     p {
+        font-family: 'Righteous', cursiva;
         font-size: 36px;
         font-weight: 400;
         color: #FFFFFF;

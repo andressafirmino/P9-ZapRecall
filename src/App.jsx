@@ -6,12 +6,12 @@ import Bottom from './components/Bottom';
 export default function App() {
 
   const [counter, setCounter] = useState(0);
-  console.log(counter);
+  
   return (
     <Body>
       <Top />
       <Questions counter={counter} setCounter={setCounter}/>
-      <Bottom counter={counter} setCounter={setCounter}/>
+      <Bottom counter={counter} />
     </Body>
   )
 }
